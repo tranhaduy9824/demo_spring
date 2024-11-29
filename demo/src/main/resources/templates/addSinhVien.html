@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sinh viên</title>
+    <link rel="stylesheet" href="/css/addSinhVien.css?v=1">
+    <link rel="stylesheet" href="/css/navbar.css?v=1">
+</head>
+<body>
+<div th:replace="navbar.html :: navbar"></div>
+<h1>Nhập thông tin sinh viên</h1>
+<form action="/addSinhVien" method="post">
+    <label for="soCMND">Số CMND:</label>
+    <input type="text" id="soCMND" name="soCMND" required><br>
+
+    <label for="hoTen">Họ tên:</label>
+    <input type="text" id="hoTen" name="hoTen" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="soDT">Số điện thoại:</label>
+    <input type="text" id="soDT" name="soDT"><br>
+
+    <label for="diaChi">Địa chỉ:</label>
+    <input type="text" id="diaChi" name="diaChi"><br>
+
+    <label for="maTruong">Trường:</label>
+    <select id="maTruong" name="maTruong" required>
+        <option th:each="truong : ${truongList}"
+                th:value="${truong.maTruong}"
+                th:text="${truong.maTruong}">Chọn trường</option>
+        <option th:if="${#lists.isEmpty(truongList)}" value="">Không có trường nào</option>
+    </select><br>
+
+    <label for="maNganh">Ngành:</label>
+    <select id="maNganh" name="maNganh" required>
+        <option th:each="nganh : ${nganhList}"
+                th:value="${nganh.maNganh}"
+                th:text="${nganh.maNganh}">Chọn ngành</option>
+        <option th:if="${#lists.isEmpty(nganhList)}" value="">Không có ngành nào</option>
+    </select><br>
+
+    <label for="heDT">Hệ đào tạo:</label>
+    <input type="text" id="heDT" name="heDT"><br>
+
+    <label for="ngayTN">Ngày tốt nghiệp:</label>
+    <input type="date" id="ngayTN" name="ngayTN" required><br>
+
+    <label for="loaiTN">Loại tốt nghiệp:</label>
+    <input type="text" id="loaiTN" name="loaiTN"><br>
+
+    <button type="submit">Thêm sinh viên</button>
+</form>
+</body>
+</html>

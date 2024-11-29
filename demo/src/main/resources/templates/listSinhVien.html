@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh sách sinh viên</title>
+    <link rel="stylesheet" href="/css/search.css?v=1">
+    <link rel="stylesheet" href="/css/navbar.css?v=1">
+</head>
+<body>
+<div th:replace="navbar.html :: navbar"></div>
+<h1>Danh sách sinh viên</h1>
+<table>
+    <tr>
+        <th>Số CMND</th>
+        <th>Họ tên</th>
+        <th>Email</th>
+        <th>Số điện thoại</th>
+        <th>Địa chỉ</th>
+    </tr>
+    <tr th:each="sinhVien : ${sinhVienList}">
+        <td th:text="${sinhVien.soCMND}"></td>
+        <td th:text="${sinhVien.hoTen}"></td>
+        <td th:text="${sinhVien.email}"></td>
+        <td th:text="${sinhVien.soDT}"></td>
+        <td th:text="${sinhVien.diaChi}"></td>
+    </tr>
+</table>
+</body>
+</html>

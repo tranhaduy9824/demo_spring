@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Basic Student Information</title>
+    <link rel="stylesheet" href="/css/search.css?v=1">
+    <link rel="stylesheet" href="/css/navbar.css?v=1">
+</head>
+<body>
+<div th:replace="navbar.html :: navbar"></div>
+<h1>Search Basic Student Information</h1>
+<form action="/searchBasicInfo" method="get">
+    <label for="keyword">Keyword:</label>
+    <input type="text" id="keyword" name="keyword" required><br>
+    <button type="submit">Search</button>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>SoCMND</th>
+        <th>HoTen</th>
+        <th>Email</th>
+        <th>SoDT</th>
+        <th>DiaChi</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sinhVien : ${sinhVienList}">
+        <td th:text="${sinhVien.soCMND}"></td>
+        <td th:text="${sinhVien.hoTen}"></td>
+        <td th:text="${sinhVien.email}"></td>
+        <td th:text="${sinhVien.soDT}"></td>
+        <td th:text="${sinhVien.diaChi}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

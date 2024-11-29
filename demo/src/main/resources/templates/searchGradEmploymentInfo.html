@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Graduation and Employment Information</title>
+    <link rel="stylesheet" href="/css/search.css?v=1">
+    <link rel="stylesheet" href="/css/navbar.css?v=1">
+</head>
+<body>
+<div th:replace="navbar.html :: navbar"></div>
+<h1>Search Graduation and Employment Information</h1>
+<form action="/searchGradEmploymentInfo" method="get">
+    <label for="keyword">Keyword:</label>
+    <input type="text" id="keyword" name="keyword" required><br>
+    <button type="submit">Search</button>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>SoCMND</th>
+        <th>HoTen</th>
+        <th>MaNganh (Tot Nghiep)</th>
+        <th>MaTruong (Tot Nghiep)</th>
+        <th>MaNganh (Cong Ty)</th>
+        <th>TenCongTy</th>
+        <th>ThoiGianLamViec</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="result : ${resultList}">
+        <td th:text="${result[0]}"></td>
+        <td th:text="${result[1]}"></td>
+        <td th:text="${result[2]}"></td>
+        <td th:text="${result[3]}"></td>
+        <td th:text="${result[4]}"></td>
+        <td th:text="${result[5]}"></td>
+        <td th:text="${result[6]}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
